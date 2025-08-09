@@ -506,3 +506,21 @@
 #    set_stack_tag = "volume"
 #
 # vim: ft=cfg
+
+# Brightness notifications
+[brightness]
+    appname = "notify-send"
+    summary = "Brightness*"
+    frame_color = "#fab387"
+    foreground = "#ffffff"
+    background = "#1e1e2e"
+    highlight = "#fab387"   # progress bar color
+
+# Volume notifications
+[volume]
+    appname = "notify-send"
+    summary = "Volume*"
+    frame_color = "#89b4fa"
+    foreground = "#ffffff"
+    background = "#1e1e2e"
+    highlight = "#89b4fa"   # progress bar color
