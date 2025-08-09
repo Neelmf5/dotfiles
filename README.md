@@ -7,9 +7,11 @@ my i3 dotfiles
 
 Add this line at the end (replace username with actual user):
 
-`username ALL=(ALL) NOPASSWD: /usr/bin/brightnessctl` \n
+`username ALL=(ALL) NOPASSWD: /usr/bin/brightnessctl` 
 
 Dependencies required
+
+
 `i3
 i3-gaps
 alacritty
