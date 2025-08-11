@@ -1,0 +1,161 @@
+[colors]
+background  = #1d2021
+background2 = #282828
+background3 = #665c54
+foreground = #ebdbb2
+background-alt = #3B4252
+primary = #81A1C1
+secondary = #88C0D0
+alert = #BF616A
+disabled = #4C566A
+workspace-bg = #3B4252
+workspace-active-bg = #434C5E
+workspace-urgent-bg = #5E81AC
+
+
+red        = #fb4934
+green      = #b8bb26
+yellow     = #fabd2f
+blue       = #83a598
+purple     = #d3869b
+teal       = #8ec07c
+orange     = #fe8019
+gray       = #a89984
+
+[bar/main]
+width = 100%
+height = 25
+offset-x = 0
+offset-y = 0
+radius = 0
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-size = 3
+line-color = ${colors.primary}
+border-size = 0
+border-color = #00000000
+padding-left = 0
+padding-right = 0
+module-margin-left = 1
+module-margin-right = 1
+ 
+font-0 = RecMonoCasual Nerd Font:size=8;0
+font-1 = Font Awesome 5 Free:style=Solid:pixelsize=10;1
+font-2 = Font Awesome 5 Free:style=Regular:pixelsize=10;1
+font-3 = Font Awesome 5 Brands:pixelsize=10;1
+font-4 = Material Icons:pixelsize=12;1
+
+modules-left = i3
+modules-center = date
+modules-right = battery brightness volume network powermenu
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+
+[module/i3]
+type = internal/i3
+pin-workspaces = true
+show-urgent = true
+strip-wsnumbers = true
+index-sort = true
+enable-click = true
+enable-scroll = true
+wrapping-scroll = false\
+reverse-scroll = false\
+fuzzy-match = true
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;10
+ws-icon-default = 1
+format = <label-state> <label-mode>
+label-mode = %mode%
+label-mode-padding = 1
+label-mode-margin = 1
+label-mode-foreground = ${colors.background}
+label-mode-background = ${colors.red}
+label-focused = %index%
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.blue}
+label-focused-padding = 2
+label-focused-margin = 1
+
+label-unfocused = %index%
+label-unfocused-padding = 1
+
+label-visible = %index%
+
+[module/date]
+type = internal/date
+interval = 1
+date = %Y-%m-%d%
+time = %H:%M:%S%
+format-prefix = " "
+format-prefix-foreground = ${colors.primary}
+label = %date% %time%
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+full-at = 98
+format-charging = <label-charging>
+format-discharging = <label-discharging>
+format-full = <label-full>
+label-charging = " %percentage%% (%time%)"
+label-discharging = "  %percentage%% (%time%)"
+label-full = "  Full"
+time-format = %H:%M
+
+[module/brightness]
+type = internal/backlight
+card = amdgpu_bl1
+enable-scroll = true
+format = <label> <bar>
+label = " "
+bar-width = 10
+bar-indicator = |
+bar-fill = ─
+bar-empty = ─
+bar-indicator-foreground = ${colors.primary}
+bar-fill-foreground = ${colors.primary}
+bar-empty-foreground = ${colors.disabled}
+
+[module/volume]
+type = internal/pulseaudio
+format-volume = <label-volume> <bar-volume>
+label-volume = " "
+label-volume-foreground = ${colors.primary}
+label-muted = "  muted"
+bar-volume-width = 10
+bar-volume-foreground-0 = ${colors.disabled}
+bar-volume-foreground-1 = ${colors.secondary}
+bar-volume-foreground-2 = ${colors.primary}
+bar-volume-indicator = |
+bar-volume-fill = ─
+bar-volume-empty = ─
+
+[module/network]
+type = custom/script
+exec = ~/.config/polybar/network.sh
+tail = true
+interval = 1
+click-left = ~/.config/polybar/network-menu.sh &
+format = <label>
+label = %output%
+
+[module/powermenu]
+type = custom/script
+exec = echo ""
+format-prefix = " "
+format-prefix-foreground = ${colors.alert}
+format-suffix = " "
+format-suffix-foreground = ${colors.alert}
+click-left = ~/.config/polybar/powermenu.sh &
